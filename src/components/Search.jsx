@@ -1,5 +1,5 @@
 import React from "react";
-
+//render Search button
 const Search = ({ onSubmit }) => {
   return (
     <button

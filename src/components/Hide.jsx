@@ -1,5 +1,5 @@
 import React from "react";
-
+ // render hide button 
 const Hide = ({ video, onVideoHide }) => {
   return (
     <button

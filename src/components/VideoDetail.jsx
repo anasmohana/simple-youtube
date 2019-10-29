@@ -1,5 +1,5 @@
 import React from "react";
-
+//run the selected video
 const VideoDetail = ({ video }) => {
   if (!video) {
     return <div>Loading ...</div>;

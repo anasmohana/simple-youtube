@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../style/channel.css";
-
+//Render a Show list items 
 class Channel extends Component {
   render() {
     return (

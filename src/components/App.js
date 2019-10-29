@@ -7,6 +7,7 @@ import getVideos from '../services/videoCollector';
 
 class App extends React.Component {
     state = {
+      //Hard coded Show List
       channels: [
         {id:'UCVTyTA7-g9nopHeHbeuvpRA',name:'Late Night with Seth Myers',selected:false},
         {id:'UCwWhs_6x42TyRM4Wstoq8HA',name:'The Daily Show with Trevor Noah',selected:false},
@@ -16,6 +17,7 @@ class App extends React.Component {
         hideVideoes: [],
         selectedVideo: null,
     }
+    //run a new search we send a new query to Youtube API to get our collection videos from desired channels.
     handleSubmit = async () => {
         let selectedCahnnel = []
         selectedCahnnel = this.state.channels.filter(channel => channel.selected);
@@ -23,17 +25,20 @@ class App extends React.Component {
         const videos = await getVideos(selectedCahnnel,this.state.hideVideoes);
         this.setState({ videos })
     };
+    //Play a selected video and hide it.
     handleVideoSelect = (video) => {
         this.setState({selectedVideo: video});
         this.handleHide(video);
     }
+    //Update the selected channel stauts.
     handelChannelSelect = (channel) => {
         const channels = [...this.state.channels];
         const index = channels.indexOf(channel);
         channels[index] = {...channel};
         channels[index].selected =! channels[index].selected;
-        this.setState({channels,newSearch:true});
+        this.setState({channels});
     }
+    //Hide the selected video and add its ID to the hideVideoes array
     handleHide = (video) => {
         const videos = this.state.videos.filter(v => v.id.videoId !== video.id.videoId);
         const hideVideoes = [...this.state.hideVideoes, video.id.videoId];
