@@ -7,6 +7,6 @@ export default function sortVideos(videos, hideVideoes){
     //remove all hiden videos.
     videos = _.remove(videos, function(o) {return !hideVideoes.includes(o.id.videoId);});
     //sort collection by date and select top 10.
-    videos = _.sortBy(videos, [function(o) {return new moment(o.snippet.publishedAt).format('MMMM Do YYYY, h:mm:ss a')}]).reverse().slice(0,10);
+    videos = _.sortBy(videos, [function(o) {return new moment(o.snippet.publishedAt).utc().format('MMMM Do YYYY, HH:mm:ss a')}]).reverse().slice(0,10);
     return videos;
 }
